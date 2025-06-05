@@ -1,32 +1,45 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import ProductCard from '../components/ProductCard';
+import { CartContext } from '../context/CartContext';
 import './Home.scss';
 
 const Home = () => {
   const [products, setProducts] = useState([]);
+  const [filtered, setFiltered] = useState([]);
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
     fetch('/api/products')
       .then(res => res.json())
-      .then(data => setProducts(data))
-      .catch(err => console.error('Erreur fetch produits :', err));
+      .then(data => {
+        setProducts(data);
+        setFiltered(data);
+      })
+      .catch(console.error);
   }, []);
 
-  return (
-    <div className="home">
-      <header className="home-header">
-        <h1>Bienvenue dans notre boutique</h1>
-        <p>Découvrez nos produits exclusifs sélectionnés rien que pour vous.</p>
-      </header>
+  const handleSearch = (term) => {
+    const lowerTerm = term.toLowerCase();
+    const filteredList = products.filter(p =>
+      p.name.toLowerCase().includes(lowerTerm) ||
+      p.description.toLowerCase().includes(lowerTerm)
+    );
+    setFiltered(filteredList);
+  };
 
-      <section className="products-section">
-        <div className="product-grid">
-          {products.map(product => (
-            <ProductCard key={product._id} product={product} />
-          ))}
-        </div>
-      </section>
-    </div>
+  return (
+    <>
+      {/* On pourrait passer handleSearch au Navbar si on modifie App.js */}
+      <div className="product-grid">
+        {filtered.length ? filtered.map(product => (
+          <ProductCard
+            key={product._id}
+            product={product}
+            onAdd={() => addToCart(product)}
+          />
+        )) : <p>Aucun produit trouvé</p>}
+      </div>
+    </>
   );
 };
 

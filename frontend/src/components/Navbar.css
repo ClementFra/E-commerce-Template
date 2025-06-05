@@ -1,24 +1,60 @@
 .navbar {
-  background: #0d47a1;
-  color: #fff;
   display: flex;
-  justify-content: space-between;
-  padding: 1rem 2rem;
   align-items: center;
+  justify-content: space-between;
+  padding: 15px 30px;
+  background-color: #222;
+  color: white;
 }
-.navbar .logo {
+.navbar .navbar-logo {
+  font-weight: bold;
   font-size: 1.5rem;
-}
-.navbar ul {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-}
-.navbar ul li a {
-  color: #fff;
+  color: white;
   text-decoration: none;
-  font-weight: 500;
 }
-.navbar ul li a:hover {
-  text-decoration: underline;
+.navbar .navbar-search {
+  padding: 7px 10px;
+  width: 300px;
+  border-radius: 4px;
+  border: none;
+}
+.navbar .cart-link {
+  position: relative;
+  margin-right: 20px;
+}
+.navbar .cart-link img {
+  width: 24px;
+  height: 24px;
+}
+.navbar .cart-link .cart-count {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 50%;
+  font-weight: bold;
+}
+.navbar .navbar-user {
+  margin-right: 15px;
+}
+.navbar .btn-login,
+.navbar .btn-register,
+.navbar .btn-logout {
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 6px 12px;
+  margin-left: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  text-decoration: none;
+}
+.navbar .btn-login:hover,
+.navbar .btn-register:hover,
+.navbar .btn-logout:hover {
+  background-color: white;
+  color: #222;
 }/*# sourceMappingURL=Navbar.css.map */

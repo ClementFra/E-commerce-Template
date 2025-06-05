@@ -1,11 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import './styles/main.scss'; // importe ton fichier SCSS global
+import { CartProvider } from './context/CartContext';
+import { AuthProvider } from './context/AuthContext'; // si utilisé
+import './styles/main.scss';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <AuthProvider>       {/* Si tu as AuthContext */}
+      <CartProvider>
+        <App />
+      </CartProvider>
+    </AuthProvider>
   </React.StrictMode>
 );
