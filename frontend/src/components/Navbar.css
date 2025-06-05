@@ -1,0 +1,24 @@
+.navbar {
+  background: #0d47a1;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  align-items: center;
+}
+.navbar .logo {
+  font-size: 1.5rem;
+}
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+.navbar ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+}
+.navbar ul li a:hover {
+  text-decoration: underline;
+}/*# sourceMappingURL=Navbar.css.map */
